@@ -69,6 +69,8 @@ public class Camera {
 	private void calculateZomm() {
 		float zoomLevel = Mouse.getDWheel()*0.1f;
 		distanceFromPlayer -= zoomLevel;
+		if(distanceFromPlayer < 30) distanceFromPlayer = 30;
+		if(distanceFromPlayer > 100) distanceFromPlayer = 100;
 	}
 	
 	private void calculatePitch() {

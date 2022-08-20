@@ -75,10 +75,14 @@ public class MainGameLoop {
 		
 		MasterRenderer renderer = new MasterRenderer();
 		
-		RawModel bunnyModel = OBJLoader.loadObjModel("person", loader);
-		TexturedModel person = new TexturedModel(bunnyModel, new ModelTexture(loader.loadTexture("white")));
+		RawModel playerModel = OBJLoader.loadObjModel("person", loader);
+		TexturedModel person = new TexturedModel(playerModel, new ModelTexture(loader.loadTexture("white")));
 		
-		Player player = new Player(person, new Vector3f(100, 0 , -50),0,0,0,1);
+		RawModel bunnyModel = OBJLoader.loadObjModel("bunny", loader);
+		TexturedModel bunny = new TexturedModel(bunnyModel, new ModelTexture(loader.loadTexture("fur")));
+		entities.add(new Entity(bunny, new Vector3f(400, 1, -600), 0,0,0,1));
+		
+		Player player = new Player(person, new Vector3f(400, 0 , -400),0,0,0,1);
 		Camera camera = new Camera(player);	
 		
 		while(!Display.isCloseRequested()){
