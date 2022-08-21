@@ -10,9 +10,9 @@ import terrains.Terrain;
 public class Player extends Entity{
 
 	private static final float RUN_SPEED = 20;
-	private static final float TURN_SPEED = 160;
-	private static final float GRAVITY = -50;
-	private static final float JUMP_POWER = 30;
+	private static final float TURN_SPEED = 120;
+	private static final float GRAVITY = -80;
+	private static final float JUMP_POWER = 40;
 	
 	private static final float TERRAIN_HEIGHT = 0;
 		
@@ -42,6 +42,28 @@ public class Player extends Entity{
 			upwardsSpeed = 0;
 			isInAir = false;
 			super.getPosition().y = terrainHeight;
+		}
+		
+		//"Invisible wall"
+		if(this.getPosition().x < 0)
+		{
+			Vector3f temp = new Vector3f(0, this.getPosition().y, this.getPosition().z);
+			this.setPosition(temp);
+		}
+		if(this.getPosition().x > 800)
+		{
+			Vector3f temp = new Vector3f(800, this.getPosition().y, this.getPosition().z);
+			this.setPosition(temp);
+		}
+		if(this.getPosition().z < -800)
+		{
+			Vector3f temp = new Vector3f(this.getPosition().x, this.getPosition().y, -800);
+			this.setPosition(temp);
+		}
+		if(this.getPosition().z > 0)
+		{
+			Vector3f temp = new Vector3f(this.getPosition().x, this.getPosition().y, 0);
+			this.setPosition(temp);
 		}
 	}
 	
