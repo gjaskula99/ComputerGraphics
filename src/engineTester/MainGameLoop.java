@@ -46,6 +46,15 @@ public class MainGameLoop {
 		
 		TexturedModel staticModel = new TexturedModel(model,new ModelTexture(loader.loadTexture("tree")));
 		
+ 
+		
+		ModelTexture fernTextureAtlas = new ModelTexture(loader.loadTexture("fern"));
+		fernTextureAtlas.setNumberOfRows(2);
+		TexturedModel fern = new TexturedModel(OBJLoader.loadObjModel("fern", loader),fernTextureAtlas);
+		
+		fern.getTexture().setHasTransparency(true);				//przy renderowaniu na przykład trawy czy czegokolwiek z przeroczystym tłem musisz tego użyć
+		fern.getTexture().setUseFakeLightnig(true);				// i tego tez, 
+		
 		Terrain terrain = new Terrain(0,-1,loader,texturePack, blendMap, "heightmap");
 
 		List<Entity> entities = new ArrayList<Entity>();
@@ -61,7 +70,34 @@ public class MainGameLoop {
             rz = 4 * random.nextFloat() - 2;
             scale = random.nextFloat() * 1f + 4f;
             entities.add(new Entity(staticModel, new Vector3f(x, y, z), rx, ry, rz, scale));
+          
+            
 		}
+		
+		
+		
+		
+		
+		for(int i = 0; i < 500; i++) {
+			if(i%2 == 0) {
+				float x = random.nextFloat() * 800 ;
+				float z = random.nextFloat() * 800 - 800 ;
+				float y = terrain.getHeightOfTerrain(x, z);
+				
+				
+				float a = random.nextFloat() * 800 ;
+				float b = random.nextFloat() * 800 - 800 ;
+				float c = terrain.getHeightOfTerrain(x, z);
+				
+	          entities.add(new Entity(fern, random.nextInt(4),  new Vector3f(x, y, z), 0, random.nextFloat() * 360, 0 , 0.9f));
+	           
+
+				
+			}
+		}
+		
+		
+		
 		
 		Light light = new Light(new Vector3f(20000,20000,2000),new Vector3f(1,1,1));
 		
@@ -73,7 +109,7 @@ public class MainGameLoop {
 		//Terrain terrain2 = new Terrain(-1,-1,loader,texturePack, blendMap, "heightmap");
 		
 		
-		MasterRenderer renderer = new MasterRenderer();
+		MasterRenderer renderer = new MasterRenderer(loader);
 		
 		RawModel playerModel = OBJLoader.loadObjModel("person", loader);
 		TexturedModel person = new TexturedModel(playerModel, new ModelTexture(loader.loadTexture("white")));
