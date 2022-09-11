@@ -20,5 +20,5 @@ W przypadku Eclipsa:
 ![natives](https://user-images.githubusercontent.com/81091594/189535789-8d64cbb4-c929-4d36-a602-149af133e958.PNG)
 
 Testy prowadzono na:
-- JRE 8 na Windows 10 (arm64)
-- JRE 17.0.3 na macOS 12.5 (darwin)
+- JRE 8 na Windows 10 (amd64)
+- JRE 17.0.3 na macOS 12.5 (arm64)
