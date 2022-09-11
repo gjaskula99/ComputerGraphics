@@ -8,7 +8,7 @@ Przedstawia wygenerowaną proceduralnie mapę o rozmiarze 800x800. Całość jes
 ## Backend
 
 Projekt napisany w Javie z wykorzystaniem biblioteki Light-weight Java Game Library (https://www.lwjgl.org).
-Do uruchomienia w IDE niezbędne załączenie bibliotek zewnętrznych - umieszczone w /lib/jars oraz /lib/natives pod architekturę arm64.
+Do uruchomienia w IDE niezbędne załączenie bibliotek zewnętrznych - umieszczone w /lib/jars oraz /lib/natives pod architekturę arm64. "Main" stanowi klasa EngineTester.
 W przypadku Eclipsa:
 1. Zaimportowanie projektu z kodu źródłowego.
 2. Dodanie plików .jar LWJGL do projektu.
